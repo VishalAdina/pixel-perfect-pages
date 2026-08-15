@@ -342,7 +342,7 @@ function Index() {
                           )}
                           <div className="bubble">
                             {m.text}
-                            <div className="msg-time">{m.time}</div>
+                            {m.side === "user" && <div className="msg-time">{m.time}</div>}
                           </div>
                         </div>
                       ))}
