@@ -129,6 +129,8 @@ function Index() {
   }, [messages, typing, connecting]);
 
   const greet = (id: EmpId, withConnect: boolean) => {
+    const script = SCRIPTS[id];
+    if (!script) return;
     timers.current.forEach(clearTimeout);
     timers.current = [];
     setMessages([]);
@@ -141,7 +143,7 @@ function Index() {
         later(() => {
           setTyping(false);
           setMessages([
-            { who: id, side: "ai", text: SCRIPTS[id].greeting, time: timeNow() },
+            { who: id, side: "ai", text: script.greeting, time: timeNow() },
           ]);
         }, 1500);
       },
